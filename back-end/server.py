@@ -31,9 +31,22 @@ def world():
     API_KEY='c63006ef6b7840179495ee8c4a42adb6'
     url = ('https://newsapi.org/v2/everything?'
         'domains=bbc.com,cnn.com,theguardian.com'
-        'language=en&'
         'sortBy=popularity&'
        'pageSize=100&'
+       'language=en&'
+       f'apiKey={API_KEY}')
+    response = requests.get(url)
+    return response.content
+
+# sport
+@app.route('/sport/<q>', defaults={'language': 'en'}, methods=['GET'])
+@app.route('/sport/<q>/<language>', methods=['GET'])
+def sport(q, language):
+    API_KEY='c63006ef6b7840179495ee8c4a42adb6'
+    url = ('https://newsapi.org/v2/everything?'
+        f'q={q}&'
+       'pageSize=20&'
+       f'language={language}&'
        f'apiKey={API_KEY}')
     response = requests.get(url)
     return response.content

@@ -1,18 +1,17 @@
 .news-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    grid-column-gap: 0.5em;
-    grid-row-gap: 0.3em;
-    margin-top: 2.5rem;
-    text-align: center;
-    width:100%
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(2,47%);
+  gap: 10px 10px;
+  grid-template-areas:
+    ". ."
+    ". .";
+    width: 100vw;
   }
   
   .pop-container{
     background-color: rgba(255, 255, 255, 0.9);
-    width: 700px;
-    height: 400px;
-    padding: 40px;
+    padding: 10px;
     border-radius:10px;
     text-align: center;
   }
