@@ -1,0 +1,5 @@
+.banner{
+    height: 250px;
+    background: url(/image/newspapper.jpg) no-repeat center center fixed; 
+    background-size: cover;
+  }

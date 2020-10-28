@@ -1,0 +1,13 @@
+.currency-container{
+    display: flex;
+    flex-direction: row;
+    width:100vw;
+    margin: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .currency-box{
+   margin: 10px;
+  }
+  

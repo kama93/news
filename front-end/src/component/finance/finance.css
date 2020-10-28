@@ -1,0 +1,11 @@
+.company-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    border: 2px solid rgb(235, 235, 235);
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+  }
