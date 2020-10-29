@@ -9,7 +9,7 @@ function Stock ({companies}) {
             <div>
                 <Row gutter={16}>
                     <Col span={8}>
-                        <Card title="Apple Inc.(AAPL)" bordered={false}>
+                        <Card title="Apple Inc.(AAPL)" bordered={false} >
                             <h2>Return</h2>
                             <h3>{((companies[companies.length - 1]['AAPL'] - companies[companies.length - 2]['AAPL']) / companies[companies.length - 2]['AAPL'] * 100).toFixed(2)}%</h3>
                         </Card>

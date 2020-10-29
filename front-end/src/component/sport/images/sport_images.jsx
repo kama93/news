@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import './sport_images.css'
 
-function SportImages({newsSport}) {
+function SportImages() {
+  const history = useHistory();
+  let [infoSport, setInfoSport] = useState([]);
+
+  const newsSport = (sport) => {
+    fetch(`http://127.0.0.1:5000//sport/${sport}`, {
+      method: 'get',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(response => response.json())
+      .then(data => setInfoSport(data.articles))
+      .catch(error => console.log(error))
+    // setTimeout(() => setLoad(false), 1500)
+  }
+
+  useEffect(() => {
+    if (infoSport && infoSport.length == 0) {
+      return
+    }
+
+     history.push('/sport/news', {infoSport})
+  }, [infoSport]);
+  
     return (
         <div className="sport">
             <div className="sport-picture-container">

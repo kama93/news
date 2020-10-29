@@ -1,5 +1,6 @@
 .weather-title{
     font-size: 20px;
+    text-align: center;
   }
   
   .weather-container{
@@ -37,3 +38,4 @@
     width:40px;
     height: auto;
   }
+

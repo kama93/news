@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+
 import NavBar from './component/navbar/navbar';
 import Banner from './component/banner/banner'
 import Weather from './component/weather/weather';
@@ -13,41 +15,17 @@ import SportNews from './component/sport/news/sport_news';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 
-import { Layout, Card } from 'antd';
-
+// ant design
+import { Layout } from 'antd';
 
 import 'antd/dist/antd.css';
 import './App.css';
 
-// ant design
-const { Meta } = Card;
-
 function App() {
   const [load, setLoad] = useState(false);
   const [curren, setCurren] = useState();
-  const [weather, setWeather] = useState();
-  const [news, setNews] = useState();
-  const [world, setWorld] = useState();
-  const [sport, setSport] = useState(false);
-  const [infoSport, setInfoSport] = useState(false);
-  const [banner, setBanner] = useState(true);
   const [science, setScience] = useState();
-  const [scienceDisplay, setScienceDisplay] = useState();
   const [companies, setCompanies] = useState([]);
-
-
-
-
-  useEffect(() => {
-    setScienceDisplay(false)
-    fetch(`http://127.0.0.1:5000//world`, {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => setWorld(data.articles))
-      .catch(error => console.log(error))
-  }, [])
 
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//science`, {
@@ -69,104 +47,8 @@ function App() {
       .catch(error => console.log(error))
   }, [])
 
-  const weatherCheck = (city, country) => {
-    setBanner(false)
-    setLoad(true)
-    setNews()
-    setWorld()
-    setSport(false)
-    setInfoSport()
-    setCurren()
-    setScienceDisplay(false)
-    fetch(`http://127.0.0.1:5000//weather/${country}/${city}`, {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => setWeather(data.data[0]))
-      .catch(error => console.log(error))
-    setTimeout(() => setLoad(false), 1500)
-  }
 
-  const newsCheck = (country) => {
-    setBanner(false)
-    setLoad(true)
-    setWeather()
-    setWorld()
-    setSport(false)
-    setInfoSport()
-    setCurren()
-    setScienceDisplay(false)
-    fetch(`http://127.0.0.1:5000//news/${country}`, {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => setNews(data.articles))
-      .catch(error => console.log(error))
-    setTimeout(() => setLoad(false), 1500)
-  }
-
-  const newsWorldCheck = () => {
-    setBanner(false)
-    setLoad(true)
-    setWeather()
-    setNews()
-    setSport(false)
-    setInfoSport()
-    setCurren()
-    setScienceDisplay(false)
-    fetch(`http://127.0.0.1:5000//world`, {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => setWorld(data.articles))
-      .catch(error => console.log(error))
-    setTimeout(() => setLoad(false), 1500)
-  }
-
-  const sportCheck = () => {
-    setBanner(false)
-    setLoad(true)
-    setWeather()
-    setNews()
-    setWorld()
-    setCurren()
-    setInfoSport()
-    setSport(true)
-    setLoad(false)
-    setScienceDisplay(false)
-  }
-
-  const newsSport = (sport) => {
-    setBanner(false)
-    setLoad(true)
-    setSport(false)
-    setWeather()
-    setNews()
-    setWorld()
-    setCurren()
-    setScienceDisplay(false)
-    fetch(`http://127.0.0.1:5000//sport/${sport}`, {
-      method: 'get',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => setInfoSport(data.articles))
-      .catch(error => console.log(error))
-    setTimeout(() => setLoad(false), 1500)
-  }
-
-  const currency = () => {
-    setBanner(false)
-    setLoad(true)
-    setSport(false)
-    setWeather()
-    setNews()
-    setWorld()
-    setInfoSport()
-    setScienceDisplay(false)
+  useEffect(() => {
     let currencies = [
       { from: "USD", to: "GBP" },
       { from: "USD", to: "PLN" },
@@ -179,60 +61,28 @@ function App() {
       .then(data => setCurren(data))
       .catch(error => console.log(error))
     setTimeout(() => setLoad(false), 1500)
-  }
+  }, [])
 
-  const scienceCheck = () => {
-    setBanner(false)
-    setLoad(true)
-    setSport(false)
-    setWeather()
-    setNews()
-    setWorld()
-    setInfoSport()
-    setCurren()
-    setScienceDisplay(true)
-    setTimeout(() => setLoad(false), 1500)
-  }
 
   return (
     <div className="App">
-    <Layout>
-      <NavBar scienceCheck={scienceCheck} currency={currency} sportCheck={sportCheck} newsWorldCheck={newsWorldCheck} newsCheck={newsCheck} weatherCheck={weatherCheck}/>
-      <Layout>
-      
-          {banner &&
-            <Banner/>
-            }
-          {load &&
-            <Loader type="Watch" color="#FFF" height={120} width={120} className="loader" />}
-          {!load &&
-            <div>
+      <NavBar/>
+        <Layout>
+          <Switch>
+            <Route exact path='/' render={() => (
               <div>
-                {scienceDisplay &&
-                  <Science science={science} />
-                }
+                <Banner />
+                <World />
               </div>
-              {curren &&
-                <Finance companies={companies} curren={curren}/>
-              }
-              {weather &&
-                <Weather data={weather}/>
-                }
-              {news &&
-                <News news={news} />
-              }
-              {world &&
-                <World world={world} />
-              }
-              {sport &&
-                <SportImages newsSport={newsSport} />
-              }
-              {infoSport &&
-                <SportNews infoSport={infoSport} />
-              }
-            </div>
-          }
-        </Layout>
+            )} />
+            <Route exact path='/finance' component={() => <Finance curren={curren} companies={companies}/>} />
+            <Route exact path='/world' component={World} />
+            <Route exact exact path='/science' component={() => <Science science={science} />} />
+            <Route exact path='/weather/:country/:city' component={Weather} />
+            <Route exact path='/news/:country' component={News} />
+            <Route exact path='/sport' component={SportImages} />
+            <Route exact path='/sport/news' component={SportNews} />
+          </Switch>
       </Layout>
     </div>
   );

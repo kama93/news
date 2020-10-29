@@ -13,3 +13,11 @@
       ". ."
       ". .";
   }
+
+  @media only screen and (max-width: 600px) {
+    .sport-picture-container{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    }
+}

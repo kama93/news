@@ -16,3 +16,14 @@
     border: 2px solid rgb(235, 235, 235);
     background: #fff;
   }
+
+  @media only screen and (max-width: 600px) {
+    .science-container{
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    }
+    .title-science{
+      font-size: 2rem;
+    }
+}
