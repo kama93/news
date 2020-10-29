@@ -6,7 +6,7 @@ node_modules
 .pnp.js
 
 
-.mp4
+*.mp4
 
 
 # testing
