@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import Chart from './chart'
+import Chart from './chart/chart'
 
 import { AutoComplete } from 'antd';
+import './company.css'
 
 
 function Company() {
@@ -30,7 +31,7 @@ function Company() {
 
     return (
         <div className="company-container">
-            <div><h1>Check information about companies market data</h1><p>For example: Walt Disney, Microsoft, etc</p></div>
+            <div><h1 className="company-name">Check information about companies market data</h1><p className='company-examples'>For example: Walt Disney, Microsoft, etc</p></div>
             <AutoComplete
                 value={value}
                 options={options}

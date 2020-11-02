@@ -26,10 +26,10 @@ function World() {
         <div className='world-container'>
           {world.map((info, i) => (
             <div id={`card${i}`} className="card-world" key={i}>
-              <a href={`${info.url}`} target="_blank">
+              <a href={`${info.url}`} target="_blank" rel="noopener noreferrer">
                 <Card
                   hoverable
-                  cover={<img alt="article image" src={`${info.urlToImage}`} />}
+                  cover={<img alt="article" src={`${info.urlToImage}`} />}
                 >
                   <Meta title={info.title} description={info.description} />
                 </Card> </a>

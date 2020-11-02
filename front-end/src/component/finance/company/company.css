@@ -1,0 +1,8 @@
+@media only screen and (max-width: 600px) {
+    .company-name{
+        font-size: 12px;
+    }
+    .company-examples{
+        font-size: 10px;
+    }
+}

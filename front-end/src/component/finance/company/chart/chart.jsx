@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './chart.css'
 
 // highcharts
 import Highcharts from 'highcharts';
@@ -48,8 +49,9 @@ function Chart({ stock, value }) {
     }
 
     return (
-        <div className="chart-container">{close.length > 0 &&
+        <div className="chart-wrapper">{close.length > 0 &&
             <HighchartsReact
+                containerProps={{ style: { width: "100%" } }}
                 highcharts={Highcharts}
                 options={chartOptions}
             />}

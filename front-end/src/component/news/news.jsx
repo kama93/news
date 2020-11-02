@@ -21,7 +21,6 @@ function News() {
       .then(response => response.json())
       .then(data => setNews(data.articles))
       .catch(error => console.log(error))
-    // setTimeout(() => setLoad(false), 1500)
   }, [country])
 
   return (
@@ -29,11 +28,11 @@ function News() {
       {news &&
         <div className='news-container'>
           {news.map((info, i) => (
-            <a href={`${info.url}`} target="_blank">
+            <a href={`${info.url}`} target="_blank" rel="noopener noreferrer">
               <div key={i}>
                 <Card
                   hoverable
-                  cover={<img alt="article image" src={`${info.urlToImage}`} />}
+                  cover={<img alt="article" src={`${info.urlToImage}`} />}
                 >
                   <Meta title={info.title} description={info.description} />
                 </Card></div> </a>))}

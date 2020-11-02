@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import NavBar from './component/navbar/navbar';
@@ -6,14 +6,13 @@ import Banner from './component/banner/banner'
 import Weather from './component/weather/weather';
 import News from './component/news/news';
 import World from './component/world/world';
-import Finance from './component/finance/finance'
+import Finance from './component/finance/finance-comp/finance'
 import Science from './component/science/science'
 import SportImages from './component/sport/images/sport_images';
 import SportNews from './component/sport/news/sport_news';
 
 // loader
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Loader from 'react-loader-spinner'
 
 // ant design
 import { Layout } from 'antd';
@@ -22,32 +21,27 @@ import 'antd/dist/antd.css';
 import './App.css';
 
 function App() {
-  const [load, setLoad] = useState(false);
-  const [curren, setCurren] = useState();
-  const [science, setScience] = useState();
-  const [companies, setCompanies] = useState([]);
 
+// pre-fetch for science component, quicker fetching with session storage
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//science`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(data => setScience(data))
+      .then(data => window.sessionStorage.setItem('science', JSON.stringify(data)))
       .catch(error => console.log(error))
   }, [])
 
+// pre-fetch for company stock info- quicker rendering
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//yahoo`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(response => response.json())
-      .then(data => setCompanies(data))
-      .catch(error => console.log(error))
   }, [])
 
-
+// pre-fetch for currency exchange- small number of API calls
   useEffect(() => {
     let currencies = [
       { from: "USD", to: "GBP" },
@@ -57,10 +51,6 @@ function App() {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })))
-      .then(response => Promise.all(response.map(x => x.json())))
-      .then(data => setCurren(data))
-      .catch(error => console.log(error))
-    setTimeout(() => setLoad(false), 1500)
   }, [])
 
 
@@ -75,9 +65,9 @@ function App() {
                 <World />
               </div>
             )} />
-            <Route exact path='/finance' component={() => <Finance curren={curren} companies={companies}/>} />
+            <Route exact path='/finance' component={ Finance } />
             <Route exact path='/world' component={World} />
-            <Route exact exact path='/science' component={() => <Science science={science} />} />
+            <Route exact exact path='/science' component={ Science } />
             <Route exact path='/weather/:country/:city' component={Weather} />
             <Route exact path='/news/:country' component={News} />
             <Route exact path='/sport' component={SportImages} />

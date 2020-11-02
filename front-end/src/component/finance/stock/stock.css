@@ -1,0 +1,17 @@
+.stock-title{
+    font-size: 15px;
+}
+
+@media only screen and (max-width: 600px) {
+    .stock-title{
+        font-size: 7px;
+    }
+    .stock-number{
+        font-size: 9px;
+    }
+    .ant-card-head-title{
+        font-size: 10px;
+    }
+}
+
+

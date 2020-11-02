@@ -18,8 +18,7 @@ function Weather() {
       .then(response => response.json())
       .then(data => setWeather(data.data[0]))
       .catch(error => console.log(error))
-    // setTimeout(() => setLoad(false), 1500)
-  }, [country])
+  }, [country, city])
 
   return (
     <div style={{ position: 'relative' }}>
