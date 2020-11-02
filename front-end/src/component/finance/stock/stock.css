@@ -16,10 +16,11 @@
 
 @media only screen and (max-width: 600px) {
     .stock-title{
-        font-size: 7px;
+        font-size: 5px;
     }
     .stock-number{
-        font-size: 8px;
+        font-size: 6px;
+        margin-left: 30px;
     }
     .ant-card-head-title{
         font-size: 10px;
