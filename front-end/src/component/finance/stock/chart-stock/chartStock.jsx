@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
+import './chart-stock.css'
+
 // highcharts
-import Highcharts, { chart } from 'highcharts';
+import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+
 
 
 function StockChart({chartStock}) {
@@ -22,23 +25,32 @@ function StockChart({chartStock}) {
 
     function createChartOptions() {
         return {
+            title: {
+                text: null
+            },
             xAxis: {
                 type: 'datetime',
+                visible: false,
+            },
+            legend: {
+                enabled: false
             },
             yAxis: {
-                title: { text: 'Close price [$]' }
+                title: {
+                    text: null
+                },
+                visible: false,
             },
             series: [
-                { data: close, name: 'close' }
+                { data: close }
             ],
-            title: { text: "Close price history" },
         }
     }
 
     return (
-        <div>
+        <div className="chart-stock-wrapper">
             <HighchartsReact
-                containerProps={{ style: { width: "80%" } }}
+                containerProps={{ style: { width: "100%", height: "100%"} }}
                 highcharts={Highcharts}
                 options={chartOptions}
             />

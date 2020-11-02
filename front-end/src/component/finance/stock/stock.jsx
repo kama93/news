@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import StockChart from './chart/chartStock'
+import StockChart from './chart-stock/chartStock'
 
 import { Card, Col, Row, Carousel } from 'antd';
 
@@ -70,23 +70,35 @@ function Stock() {
                                 <Row gutter={16}>
                                     <Col span={8}>
                                         <Card title={comp[0].name} bordered={false} >
-                                            <h2 className="stock-title">Close price</h2>
-                                            <h3 className="stock-number">{checkStock(comp[0].ticker)}</h3>
-                                            <StockChart chartStock = {chartStock(comp[0].ticker)} />
+                                            <div className="stock-small-container">
+                                                <div className="stock-description">
+                                                    <h2 className="stock-title">Close price</h2>
+                                                    <h3 className="stock-number">{checkStock(comp[0].ticker)}</h3>
+                                                </div>
+                                                <StockChart chartStock={chartStock(comp[0].ticker)} />
+                                            </div>
                                         </Card>
                                     </Col>
                                     <Col span={8}>
                                         <Card title={comp[1].ticker} bordered={false} >
-                                            <h2 className="stock-title">Close price</h2>
-                                            <h3 className="stock-number">{checkStock(comp[1].ticker)}</h3>
-                                            <StockChart chartStock = {chartStock(comp[1].ticker)} />
+                                            <div className="stock-small-container">
+                                                <div className="stock-description">
+                                                    <h2 className="stock-title">Close price</h2>
+                                                    <h3 className="stock-number">{checkStock(comp[1].ticker)}</h3>
+                                                </div>
+                                                <StockChart chartStock={chartStock(comp[1].ticker)} />
+                                            </div>
                                         </Card>
                                     </Col>
                                     <Col span={8}>
                                         <Card title={comp[2].name} bordered={false} >
-                                            <h2 className="stock-title">Close price</h2>
-                                            <h3 className="stock-number">{checkStock(comp[2].ticker)}</h3>
-                                            <StockChart chartStock = {chartStock(comp[2].ticker)} />
+                                            <div className="stock-small-container">
+                                                <div className="stock-description">
+                                                    <h2 className="stock-title">Close price</h2>
+                                                    <h3 className="stock-number">{checkStock(comp[2].ticker)}</h3>
+                                                </div>
+                                                <StockChart chartStock={chartStock(comp[2].ticker)} />
+                                            </div>
                                         </Card>
                                     </Col>
                                 </Row>
