@@ -22,7 +22,7 @@ import './App.css';
 
 function App() {
 
-// pre-fetch for science component, quicker fetching with session storage
+  // pre-fetch for science component, quicker fetching with session storage
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//science`, {
       method: 'get',
@@ -33,7 +33,7 @@ function App() {
       .catch(error => console.log(error))
   }, [])
 
-// pre-fetch for company stock info- quicker rendering
+  // pre-fetch for company stock info- quicker rendering
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//yahoo`, {
       method: 'get',
@@ -41,7 +41,7 @@ function App() {
     })
   }, [])
 
-// pre-fetch for currency exchange- small number of API calls
+  // pre-fetch for currency exchange- small number of API calls
   useEffect(() => {
     let currencies = [
       { from: "USD", to: "GBP" },
@@ -56,23 +56,23 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar/>
-        <Layout>
-          <Switch>
-            <Route exact path='/' render={() => (
-              <div>
-                <Banner />
-                <World />
-              </div>
-            )} />
-            <Route exact path='/finance' component={ Finance } />
-            <Route exact path='/world' component={World} />
-            <Route exact exact path='/science' component={ Science } />
-            <Route exact path='/weather/:country/:city' component={Weather} />
-            <Route exact path='/news/:country' component={News} />
-            <Route exact path='/sport' component={SportImages} />
-            <Route exact path='/sport/news' component={SportNews} />
-          </Switch>
+      <NavBar />
+      <Layout>
+        <Switch>
+          <Route exact path='/' render={() => (
+            <div>
+              <Banner />
+              <World />
+            </div>
+          )} />
+          <Route exact path='/finance' component={Finance} />
+          <Route exact path='/world' component={World} />
+          <Route exact exact path='/science' component={Science} />
+          <Route exact path='/weather/:country/:city' component={Weather} />
+          <Route exact path='/news/:country' component={News} />
+          <Route exact path='/sport' component={SportImages} />
+          <Route exact path='/sport/news' component={SportNews} />
+        </Switch>
       </Layout>
     </div>
   );

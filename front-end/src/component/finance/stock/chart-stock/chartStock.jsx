@@ -8,16 +8,15 @@ import HighchartsReact from 'highcharts-react-official';
 
 
 
-function StockChart({chartStock}) {
+function StockChart({ chartStock }) {
     const [close, setClose] = useState([]);
     const [chartOptions, setChartOptions] = useState(createChartOptions());
 
-
+    // creating data for small charts about history stock data
     useEffect(() => {
         if (!chartStock) {
             return
         }
-
         setClose(chartStock.map(x => [x.date, x.stock]));
     }, [chartStock])
 
@@ -50,7 +49,7 @@ function StockChart({chartStock}) {
     return (
         <div className="chart-stock-wrapper">
             <HighchartsReact
-                containerProps={{ style: { width: "100%", height: "100%"} }}
+                containerProps={{ style: { width: "100%", height: "100%" } }}
                 highcharts={Highcharts}
                 options={chartOptions}
             />

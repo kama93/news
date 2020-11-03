@@ -10,6 +10,7 @@ const { Header } = Layout;
 
 function NavBar() {
 
+    // small lists for UK and Poland items
     const menuUK = (
         <Menu>
             <Menu.Item key="1" icon={<ThunderboltOutlined />}><Link to="/weather/UK/London" >Weather</Link></Menu.Item>

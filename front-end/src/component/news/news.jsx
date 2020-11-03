@@ -13,6 +13,7 @@ function News() {
 
   const [news, setNews] = useState();
 
+  // getting news articles for UK or Poland
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//news/${country}`, {
       method: 'get',

@@ -17,7 +17,7 @@ posts = db.posts
 app = Flask(__name__)
 CORS(app)
 
-# weather
+# weather- Weatherbit.io API
 
 
 @app.route('/weather/<country>/<city>', methods=['GET'])
@@ -27,7 +27,7 @@ def weather(country, city):
     resp = requests.get(url)
     return resp.content
 
-# news
+# news- News API
 
 
 @app.route('/news/<country>', methods=['GET'])
@@ -40,7 +40,7 @@ def news(country):
     response = requests.get(url)
     return response.content
 
-# world news
+# world news- News API
 
 
 @app.route('/world', methods=['GET'])
@@ -55,7 +55,7 @@ def world():
     response = requests.get(url)
     return response.content
 
-# sport
+# sport- News API
 
 
 @app.route('/sport/<q>', defaults={'language': 'en'}, methods=['GET'])
@@ -71,7 +71,8 @@ def sport(q, language):
     return response.content
 
 
-# currency
+# currency- ALPHA VANTAGE API
+# sending some data to MongoDB for better performance
 
 
 @app.route('/currency/<fromCurrency>/<toCurrency>', methods=['GET'])
@@ -90,7 +91,7 @@ def currency(fromCurrency, toCurrency):
     else:
         return x[0]['currency']
 
-# company look up
+# company look up- ALPHA VANTAGE API
 
 
 @app.route('/company/<company_name>', methods=['GET'])
@@ -102,7 +103,7 @@ def company(company_name):
     response = requests.get(url)
     return response.content
 
-# daily stock
+# daily stock- ALPHA VANTAGE API
 
 
 @app.route('/stock/<symbol>', methods=['GET'])
@@ -114,7 +115,8 @@ def stock(symbol):
     response = requests.get(url)
     return response.content
 
-# yahoo finance API
+# company stock check - yahoo finance API
+# sending some data to MongoDB for better performance
 
 
 @app.route('/yahoo', methods=['GET'])
@@ -137,7 +139,10 @@ def yahoo():
         return jsonify(x[0]['stocks'])
 
 
-# web scraping Nature
+# web scraping Nature (only data available for scraping, checked with robots.txt)
+# sending some data to MongoDB for better performance
+
+
 @app.route('/science', methods=['GET'])
 def science():
     collection = db.science

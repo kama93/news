@@ -11,6 +11,7 @@ function Chart({ stock, value }) {
     const [chartOptions, setChartOptions] = useState(createChartOptions());
 
 
+    // creating data for chart, depending on autocomplete company choice
     useEffect(() => {
         for (let i = 0; i < stock.length; i++) {
             if (stock[i].value === value) {

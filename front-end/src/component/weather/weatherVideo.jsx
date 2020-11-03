@@ -4,6 +4,7 @@ import './weatherVideo.css';
 
 function WeatherVideo({ weather }) {
     return (
+        // displaying video depends on weather
         <div>
             {weather.weather.description.includes('clouds' || 'Drizzle') &&
                 <video className='videoTag' autoPlay loop muted>

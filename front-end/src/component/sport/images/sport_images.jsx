@@ -8,6 +8,7 @@ function SportImages() {
   const history = useHistory();
   let [infoSport, setInfoSport] = useState([]);
 
+  // fetch for sport news- 4 options-football, tennis, volleyball, basketball- depends which photo client click
   const newsSport = (sport) => {
     fetch(`http://127.0.0.1:5000//sport/${sport}`, {
       method: 'get',

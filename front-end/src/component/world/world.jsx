@@ -10,6 +10,7 @@ const { Meta } = Card;
 function World() {
   const [world, setWorld] = useState('');
 
+  // fetching world news from API
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//world`, {
       method: 'get',

@@ -10,6 +10,7 @@ const { Meta } = Card;
 function Science() {
   const [science, setScience] = useState();
 
+  // getting data for science card from session storage if available or from database/ server scraping
   useEffect(() => {
     const cachedHits = window.sessionStorage.getItem('science');
     if (cachedHits) {

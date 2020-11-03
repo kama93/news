@@ -10,6 +10,7 @@ function Weather() {
   let { country, city } = useParams();
   const [weather, setWeather] = useState();
 
+  // fetch data for weather info - UK (London) or Poland (Warsaw)
   useEffect(() => {
     fetch(`http://127.0.0.1:5000//weather/${country}/${city}`, {
       method: 'get',

@@ -7,6 +7,7 @@ import './currency.css'
 function Currency() {
   const [curren, setCurren] = useState();
 
+  // fetch for currency info
   useEffect(() => {
     let currencies = [
       { from: "USD", to: "GBP" },

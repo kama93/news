@@ -8,6 +8,7 @@ import './sport_news.css'
 const { Meta } = Card;
 
 function SportNews({ location }) {
+    // getting data through useHistory, so location feature use to get data
     let infoSport = location.state.infoSport
 
     return (

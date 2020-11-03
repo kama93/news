@@ -26,6 +26,7 @@ function Stock() {
         ]
     ]
 
+    // getting info about history data for 9 different companies
     useEffect(() => {
         fetch(`http://127.0.0.1:5000//yahoo`, {
             method: 'get',
@@ -36,6 +37,7 @@ function Stock() {
             .catch(error => console.log(error))
     }, [])
 
+    // counting previous day price and returning no market for  close market days
     const checkStock = (companyName) => {
         const stockNum = ((companies[companies.length - 1][companyName] - companies[companies.length - 2][companyName]) / companies[companies.length - 2][companyName] * 100).toFixed(2)
         if (stockNum == 0.00) {
