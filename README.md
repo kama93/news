@@ -19,7 +19,8 @@ banner + world news, after clicking on article its redirecting to page
 
 * autocomplete search input- after choosing company it showing chart with stock history data (unfortunately its only 5 free request per minute, so can be some issues if user put too many letters or want to check more than one company)
 
-![picture](img/chart.png) ![picture](img/autocomplete.png)
+![picture](img/autocomplete.png)
+![picture](img/chart.png) 
 
 ## Science:
 showing 7 articles from Nature website- on server site info is fetching using scraping method
