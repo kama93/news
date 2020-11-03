@@ -1,4 +1,4 @@
-NEWS APP
+# NEWS APP
 
 News app using React, Python as a server side and MongoDB also Ant Design components. App used few APIs- News API, Weatherbit.io API and for finance page- Alpha Vintage API, yahoo finance API. It is also used scraping (from Nature.com). MongoDB is used for better performance data is schedule to be removed on different times depend on collection (with createIndex).
 App is mobile responsive.
