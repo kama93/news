@@ -25,21 +25,22 @@ banner + world news, after clicking on article its redirecting to page
 ## Science:
 showing 7 articles from Nature website- on server site info is fetching using scraping method
 
-[picture](img/science.png)
+![picture](img/science.png)
 
 
 ## World:
 displaying world info from API, after clicking on article its redirecting to page
 
-[picture](img/world.png)
+![picture](img/world.png)
 
 ## UK/ Poland
 * weather - displaying info from API with video depending on cast
-[picture](img/weather.png)
+![picture](img/weather.png)
 * news- displaying news info from API, after clicking on article its redirecting to page
-[picture](img/news.png)
+![picture](img/news.png)
 * sport- redirecting to website with 4 images with different balls (tennis, volleyball, basketball, football)
-[picture](img/sport.png) [picture](img/sport-news.png)
+![picture](img/sport.png) 
+![picture](img/sport-news.png)
 
 ## Globe icon:
 redirecting to main page
