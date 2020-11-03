@@ -40,12 +40,12 @@ function Stock() {
     // counting previous day price and returning no market for  close market days
     const checkStock = (companyName) => {
         const stockNum = ((companies[companies.length - 1][companyName] - companies[companies.length - 2][companyName]) / companies[companies.length - 2][companyName] * 100).toFixed(2)
-        if (stockNum == 0.00) {
-            return 'no market today'
-        }
-        else {
+        // if (stockNum == 0.00) {
+        //     return 'no market today'
+        // }
+        // else {
             return `${stockNum}%`
-        }
+        // }
     }
 
     const chartStock = (companyName) => {
