@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect } from 'react';
 import { Card, Col, Row } from 'antd';
 
 import './currency.css'
 
+
 function Currency() {
-  const [curren, setCurren] = useState();
+  const [ccy, setCcy] = React.useState([]);
 
   // fetch for currency info
   useEffect(() => {
@@ -18,15 +18,15 @@ function Currency() {
       headers: { 'Content-Type': 'application/json' }
     })))
       .then(response => Promise.all(response.map(x => x.json())))
-      .then(data => setCurren(data))
+      .then((data: any) => setCcy(data))
       .catch(error => console.log(error))
   }, [])
 
   return (
     <div>
-      {curren &&
+      {ccy &&
         <div className="site-card-wrapper currency-container">
-          {curren.map(curr =>
+          {ccy.map(curr =>
             <Row >
               <Col >
                 <Card className="currency-box" title={`${curr['Realtime Currency Exchange Rate']['2. From_Currency Name']} to ${curr['Realtime Currency Exchange Rate']['4. To_Currency Name']}`} bordered={true}>

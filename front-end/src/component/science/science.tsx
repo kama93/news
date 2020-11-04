@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import { Card } from 'antd';
 
@@ -8,7 +8,7 @@ import './science.css'
 const { Meta } = Card;
 
 function Science() {
-  const [science, setScience] = useState();
+  const [science, setScience] = React.useState<any[]>([]);
 
   // getting data for science card from session storage if available or from database/ server scraping
   useEffect(() => {

@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import {StockArray} from '../../../../common-types'
 import './chart.css'
 
 // highcharts
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-
-function Chart({ stock, value }) {
-    const [close, setClose] = useState([]);
-    const [chartOptions, setChartOptions] = useState(createChartOptions());
+function Chart( {value, stock}: {value: string, stock: StockArray[]}) {
+    const [close, setClose] = React.useState<number[][]>([]);
+    const [chartOptions, setChartOptions] = React.useState(createChartOptions());
 
 
     // creating data for chart, depending on autocomplete company choice
@@ -21,8 +21,7 @@ function Chart({ stock, value }) {
                 })
                     .then(response => response.json())
                     .then(data => {
-                        const timeseries = data['Time Series (Daily)']
-                        console.log(timeseries)
+                        const timeseries: any = data['Time Series (Daily)']
                         setClose(Object.keys(timeseries).map(key => [Date.parse(key), parseFloat(timeseries[key]['4. close'])]));
                     })
                     .catch(error => console.log(error))

@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from "react-router-dom";
 
 import { Card } from 'antd';
 
 import './news.css'
 
+interface ParamTypes {
+  country: string
+}
+
 // ant design
 const { Meta } = Card;
 
 function News() {
-  let { country } = useParams();
+  let { country } = useParams<ParamTypes>();
 
-  const [news, setNews] = useState();
+  const [news, setNews] = React.useState<any[]>([]);
 
   // getting news articles for UK or Poland
   useEffect(() => {
@@ -20,7 +24,7 @@ function News() {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => response.json())
-      .then(data => setNews(data.articles))
+      .then((data: any) => setNews(data.articles))
       .catch(error => console.log(error))
   }, [country])
 

@@ -8,7 +8,7 @@ import './world.css'
 const { Meta } = Card;
 
 function World() {
-  const [world, setWorld] = useState('');
+  const [world, setWorld] = React.useState<any[]>([]);
 
   // fetching world news from API
   useEffect(() => {
