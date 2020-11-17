@@ -17,7 +17,7 @@ function Science() {
       setScience(JSON.parse(cachedHits));
     }
     else {
-      fetch(`http://127.0.0.1:5000//science`, {
+      fetch(`/api/science`, {
         method: 'get',
         headers: { 'Content-Type': 'application/json' }
       })

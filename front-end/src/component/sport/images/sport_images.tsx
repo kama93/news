@@ -10,7 +10,7 @@ function SportImages() {
 
   // fetch for sport news- 4 options-football, tennis, volleyball, basketball- depends which photo client click
   const newsSport = (sport: string) => {
-    fetch(`http://127.0.0.1:5000//sport/${sport}`, {
+    fetch(`/api/sport/${sport}`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })

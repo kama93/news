@@ -24,7 +24,7 @@ function App() {
 
   // pre-fetch for science component, quicker fetching with session storage
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000//science`, {
+    fetch(`/api/science`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -35,7 +35,7 @@ function App() {
 
   // pre-fetch for company stock info- quicker rendering
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000//yahoo`, {
+    fetch(`/api/yahoo`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -47,7 +47,7 @@ function App() {
       { from: "USD", to: "GBP" },
       { from: "USD", to: "PLN" },
       { from: "USD", to: "EUR" }]
-    Promise.all(currencies.map(x => fetch(`http://127.0.0.1:5000/currency/${x.from}/${x.to}`, {
+    Promise.all(currencies.map(x => fetch(`/api/currency/${x.from}/${x.to}`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })))

@@ -12,7 +12,7 @@ function World() {
 
   // fetching world news from API
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000//world`, {
+    fetch(`/api/world`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })

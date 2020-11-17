@@ -15,7 +15,7 @@ function Chart( {value, stock}: {value: string, stock: StockArray[]}) {
     useEffect(() => {
         for (let i = 0; i < stock.length; i++) {
             if (stock[i].value === value) {
-                fetch(`http://127.0.0.1:5000//stock/${stock[i].symbol}`, {
+                fetch(`/api/stock/${stock[i].symbol}`, {
                     method: 'get',
                     headers: { 'Content-Type': 'application/json' }
                 })

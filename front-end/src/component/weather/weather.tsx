@@ -17,7 +17,7 @@ function Weather() {
 
   // fetch data for weather info - UK (London) or Poland (Warsaw)
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000//weather/${country}/${city}`, {
+    fetch(`/api/weather/${country}/${city}`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })

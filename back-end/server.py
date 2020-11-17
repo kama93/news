@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 import requests
 from flask_cors import CORS
 from os import link
+import os
 from bs4 import BeautifulSoup
 import re
 import json
@@ -9,8 +10,7 @@ import yfinance as yf
 from pymongo import MongoClient
 
 # mongo DB
-client = MongoClient()
-client = MongoClient('localhost', 27017)
+client = MongoClient(os.environ.get('MONGO_DB', 'localhost'), 27017)
 db = client.news
 posts = db.posts
 
@@ -19,10 +19,13 @@ CORS(app)
 
 # weather- Weatherbit.io API
 
+WEATHER_KEY = os.environ['WEATHER_KEY']
+NEWS_KEY = os.environ['NEWS_KEY']
+ALPHA_VANTAGE_KEY = os.environ['ALPHA_VANTAGE_KEY']
 
-@app.route('/weather/<country>/<city>', methods=['GET'])
+@app.route('/api/weather/<country>/<city>', methods=['GET'])
 def weather(country, city):
-    API_KEY = '5630746449064f969f3889643b4b86a7'
+    API_KEY = WEATHER_KEY
     url = f'https://api.weatherbit.io/v2.0/current?city={city}=&country={country}&key={API_KEY}'
     resp = requests.get(url)
     return resp.content
@@ -30,9 +33,9 @@ def weather(country, city):
 # news- News API
 
 
-@app.route('/news/<country>', methods=['GET'])
+@app.route('/api/news/<country>', methods=['GET'])
 def news(country):
-    API_KEY = 'c63006ef6b7840179495ee8c4a42adb6'
+    API_KEY = NEWS_KEY
     url = ('http://newsapi.org/v2/top-headlines?'
            f'country={country}&'
            'pageSize=100&'
@@ -43,9 +46,9 @@ def news(country):
 # world news- News API
 
 
-@app.route('/world', methods=['GET'])
+@app.route('/api/world', methods=['GET'])
 def world():
-    API_KEY = 'c63006ef6b7840179495ee8c4a42adb6'
+    API_KEY = NEWS_KEY
     url = ('https://newsapi.org/v2/everything?'
            'domains=bbc.com,cnn.com,theguardian.com'
            'sortBy=popularity&'
@@ -58,10 +61,10 @@ def world():
 # sport- News API
 
 
-@app.route('/sport/<q>', defaults={'language': 'en'}, methods=['GET'])
-@app.route('/sport/<q>/<language>', methods=['GET'])
+@app.route('/api/sport/<q>', defaults={'language': 'en'}, methods=['GET'])
+@app.route('/api/sport/<q>/<language>', methods=['GET'])
 def sport(q, language):
-    API_KEY = 'c63006ef6b7840179495ee8c4a42adb6'
+    API_KEY = NEWS_KEY
     url = ('https://newsapi.org/v2/everything?'
            f'q={q}&'
            'pageSize=20&'
@@ -75,12 +78,12 @@ def sport(q, language):
 # sending some data to MongoDB for better performance
 
 
-@app.route('/currency/<fromCurrency>/<toCurrency>', methods=['GET'])
+@app.route('/api/currency/<fromCurrency>/<toCurrency>', methods=['GET'])
 def currency(fromCurrency, toCurrency):
     collection = db.currency
     x = list(collection.find())
     if len(x) == 0:
-        API_KEY = 'H29UTR8EQ0QTCJR2'
+        API_KEY = ALPHA_VANTAGE_KEY
         url = ('https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&'
                f'from_currency={fromCurrency.upper()}&'
                f'to_currency={toCurrency.upper()}&'
@@ -94,9 +97,9 @@ def currency(fromCurrency, toCurrency):
 # company look up- ALPHA VANTAGE API
 
 
-@app.route('/company/<company_name>', methods=['GET'])
+@app.route('/api/company/<company_name>', methods=['GET'])
 def company(company_name):
-    API_KEY = 'H29UTR8EQ0QTCJR2'
+    API_KEY = ALPHA_VANTAGE_KEY
     url = ('https://www.alphavantage.co/query?function=SYMBOL_SEARCH&'
            f'keywords={company_name}&'
            f'apikey={API_KEY}')
@@ -106,9 +109,9 @@ def company(company_name):
 # daily stock- ALPHA VANTAGE API
 
 
-@app.route('/stock/<symbol>', methods=['GET'])
+@app.route('/api/stock/<symbol>', methods=['GET'])
 def stock(symbol):
-    API_KEY = 'H29UTR8EQ0QTCJR2'
+    API_KEY = ALPHA_VANTAGE_KEY
     url = ('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&'
            f'symbol={symbol}&'
            f'apikey={API_KEY}')
@@ -119,7 +122,7 @@ def stock(symbol):
 # sending some data to MongoDB for better performance
 
 
-@app.route('/yahoo', methods=['GET'])
+@app.route('/api/yahoo', methods=['GET'])
 def yahoo():
     collection = db.stock
     x = list(collection.find())
@@ -139,12 +142,11 @@ def yahoo():
         return jsonify(x[0]['stocks'])
 
 
-# web scraping Nature (only data available for scraping, checked with robots.txt)
-# sending some data to MongoDB for better performance
-
-
-@app.route('/science', methods=['GET'])
+@app.route('/api/science', methods=['GET'])
 def science():
+    # web scraping Nature (only data available for scraping, checked with robots.txt)
+    # sending some data to MongoDB for better performance
+
     collection = db.science
     x = list(collection.find())
     if len(x) == 0:
@@ -222,4 +224,4 @@ def science():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()

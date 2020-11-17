@@ -18,7 +18,7 @@ const Company: React.FC = () => {
     const onSearch = (searchText: string) => {
         setLoad(true);
         setValue(searchText)
-        fetch(`http://127.0.0.1:5000/company/${searchText}`, {
+        fetch(`/api/company/${searchText}`, {
             method: 'get',
             headers: { 'Content-Type': 'application/json' }
         })

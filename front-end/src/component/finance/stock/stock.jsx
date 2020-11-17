@@ -28,7 +28,7 @@ function Stock() {
 
     // getting info about history data for 9 different companies
     useEffect(() => {
-        fetch(`http://127.0.0.1:5000//yahoo`, {
+        fetch(`/api/yahoo`, {
             method: 'get',
             headers: { 'Content-Type': 'application/json' }
         })

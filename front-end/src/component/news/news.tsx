@@ -19,7 +19,7 @@ function News() {
 
   // getting news articles for UK or Poland
   useEffect(() => {
-    fetch(`http://127.0.0.1:5000//news/${country}`, {
+    fetch(`/api/news/${country}`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })
