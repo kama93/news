@@ -10,7 +10,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: front end
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v1
         with:
           context: front-end
           file: ./front-end/Dockerfile
@@ -20,7 +20,7 @@ jobs:
           tags: latest
           push: true
       - name: service
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v1
         with:
           context: back-end
           file: ./back-end/Dockerfile
