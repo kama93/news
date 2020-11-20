@@ -13,7 +13,7 @@ function Currency() {
       { from: "USD", to: "GBP" },
       { from: "USD", to: "PLN" },
       { from: "USD", to: "EUR" }]
-    Promise.all(currencies.map(x => fetch(`http://127.0.0.1:5000/currency/${x.from}/${x.to}`, {
+    Promise.all(currencies.map(x => fetch(`/api/currency/${x.from}/${x.to}`, {
       method: 'get',
       headers: { 'Content-Type': 'application/json' }
     })))

@@ -43,6 +43,9 @@ function StockChart({ chartStock }) {
             series: [
                 { data: close }
             ],
+            credits: {
+                enabled: false
+              },
         }
     }
 
@@ -53,6 +56,7 @@ function StockChart({ chartStock }) {
                 highcharts={Highcharts}
                 options={chartOptions}
             />
+
         </div>
     )
 }

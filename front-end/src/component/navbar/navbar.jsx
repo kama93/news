@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Layout, Menu, Dropdown } from 'antd';
 import { HomeOutlined, DollarOutlined, BulbOutlined, ReadOutlined, ThunderboltOutlined, SkinOutlined } from '@ant-design/icons';
 
+import './navbar.css'
 const { Header } = Layout;
 
 function NavBar() {
