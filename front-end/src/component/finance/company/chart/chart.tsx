@@ -45,13 +45,16 @@ function Chart( {value, stock}: {value: string, stock: StockArray[]}) {
                 { data: close, name: 'close' }
             ],
             title: { text: "Close price history" },
+            credits: {
+                enabled: false
+              },
         }
     }
 
     return (
         <div className="chart-wrapper">{close.length > 0 &&
             <HighchartsReact
-                containerProps={{ style: { width: "100%" } }}
+                containerProps={{ style: { width: "90%" } }}
                 highcharts={Highcharts}
                 options={chartOptions}
             />}

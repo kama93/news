@@ -39,3 +39,20 @@
     height: auto;
   }
 
+  @media only screen and (max-width: 600px) {
+    .weather-container{
+    width: 200px;
+    padding: 5px;
+    margin-left: 80px
+    }
+    .weather-title{
+      font-size: 10px;
+    }
+    .sun{
+      width:30px;
+      height: 20px;
+    }
+    .mobile{
+      font-size: 8px
+    }
+  }

@@ -4,7 +4,10 @@
 
 @media only screen and (max-width: 600px) {
     .chart-wrapper {
-        width: 80%;
+        width: 350px;
+    }
+    .ant-layout, .ant-layout * {
+        font-size: 15px;
     }
     
 }
