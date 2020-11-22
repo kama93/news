@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import NavBar from './component/navbar/navbar';
-import Banner from './component/banner/banner'
+import MainPage from './component/main-page/main-page'
 import Weather from './component/weather/weather';
 import News from './component/news/news';
 import World from './component/world/world';
@@ -58,12 +58,7 @@ function App() {
       <NavBar />
       <Layout>
         <Switch>
-          <Route exact path='/' render={() => (
-            <div>
-              <Banner />
-              <World />
-            </div>
-          )} />
+          <Route exact path='/'  component={MainPage}/>
           <Route exact path='/finance' component={Finance} />
           <Route exact path='/world' component={World} />
           <Route exact exact path='/science' component={Science} />
