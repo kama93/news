@@ -16,7 +16,7 @@ function MainPage() {
             setTimeout(() => {
                 setWelcomePage(true)
             }, 800);
-        }, 4000);
+        }, 1000);
       }, [])
 
     return (
