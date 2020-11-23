@@ -5,9 +5,9 @@ import './weatherVideo.css';
 function WeatherVideo({ weather }) {
     return (
         // displaying video depends on weather
-        <div>
+        <div className= 'video-weater-container'>
             {weather.weather.description.includes('clouds' || 'Drizzle') &&
-                <video className='videoTag' autoPlay loop muted playsinline>
+                <video className='videoTag' autoPlay loop muted playsinlines>
                     <source src='/image/cloud.mp4' type='video/mp4' />
                 </video>}
             {weather.weather.description.includes('rain' || 'drizzle' || 'sleet') &&
