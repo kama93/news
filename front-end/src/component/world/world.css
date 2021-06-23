@@ -30,4 +30,7 @@
     .world-container{
       margin-top: 100px;
     }
+    .ant-card{
+      padding: 5px !important;
+    }
   }

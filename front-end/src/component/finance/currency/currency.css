@@ -18,8 +18,8 @@
       margin: 5px
     }
     .currency-box{
-      margin: 10px;
-      width: 80vw
+      width: 80vw;
+      margin-top: 10px
      }
      .currency-price{
        font-size: 10px;
