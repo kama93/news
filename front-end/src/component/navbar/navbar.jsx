@@ -29,7 +29,7 @@ function NavBar() {
 
     return (
         <Layout>
-            <Header className="header">
+            <Header className="header" style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                     <Link to="/" ><img alt='logo' src='/image/world.png' className="logo-img" /></Link>
                     <Menu.Item key="3" icon={<DollarOutlined />}><Link to="/finance" >Finance</Link></Menu.Item>

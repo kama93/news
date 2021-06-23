@@ -1,5 +1,6 @@
 .sport-news-container{
-    margin: 20px;
+  margin: 20px;
+  margin-top: 80px;
   display: grid;
   grid-template-columns: repeat(2,50%);
   gap: 10px 10px;

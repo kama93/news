@@ -1,3 +1,13 @@
+.ant-menu.ant-menu-dark{
+background: rgba(0, 21, 42, 0.6) !important;
+width: 100vw !important;
+}
+
+.ant-layout-header{
+    padding: 0 0 !important;
+    background-color: transparent !important;
+}
+
 @media only screen and (max-width: 600px) {
     .ant-layout, .ant-layout * {
         font-size: 30px
