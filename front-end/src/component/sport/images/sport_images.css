@@ -6,8 +6,8 @@
   .sport-picture-container{
     cursor: pointer;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 50vw);
+    grid-template-rows: repeat(2, 50vh);
     gap: 0px 0px;
     grid-template-areas:
       ". ."

@@ -3,7 +3,9 @@
     margin: 10px;
     cursor: pointer;
     display: grid;
-    grid-template-columns: repeat(2, 48%);
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 45%);
     grid-template-rows: repeat(3, 1fr);
     gap: 5px 5px;
     grid-template-areas:
@@ -14,7 +16,11 @@
   .title-science{
     font-size: 3rem;
     border: 2px solid rgb(235, 235, 235);
-    background: #fff;
+    background: rgba(270, 270, 270, 0.7);
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 20px
   }
 
   @media only screen and (max-width: 600px) {

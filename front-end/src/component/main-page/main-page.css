@@ -8,7 +8,7 @@
         margin-top: 30px;
         margin-left: 40px;
         font-weight: bold;
-        color: white
+        color: rgba(270, 270, 270, 0.8);
 }
 
  @-webkit-keyframes roll-out-blurred-bottom {
