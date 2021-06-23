@@ -9,7 +9,7 @@
     gap: 25px 25px;
   }
   .title-science{
-    font-size: 3rem;
+    font-size: calc(20px + (40 - 20) * ((100vw - 300px) / (1600 - 300)));
     border: 2px solid rgb(235, 235, 235);
     background: rgba(270, 270, 270, 0.7);
     border-radius: 10px;

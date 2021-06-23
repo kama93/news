@@ -4,8 +4,8 @@
 }
 
 .pagemain-title{
-        font-size: 100px;
-        margin-top: 50px;
+        font-size: calc(100px + (140 - 100) * ((100vw - 300px) / (1600 - 300)));
+        margin-top: 80px;
         margin-left: 40px;
         font-weight: bold;
         color: rgba(270, 270, 270, 0.8);
@@ -40,3 +40,8 @@
     }
   }
   
+@media only screen and (max-width: 600px) {
+        .pagemain-title{
+                font-size: 150px;
+        }
+}
