@@ -3,6 +3,13 @@
 	        animation: roll-out-blurred-bottom 0.6s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
 }
 
+.pagemain-title{
+        font-size: 100px;
+        margin-top: 30px;
+        margin-left: 40px;
+        font-weight: bold;
+        color: white
+}
 
  @-webkit-keyframes roll-out-blurred-bottom {
     0% {

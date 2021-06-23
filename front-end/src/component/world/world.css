@@ -5,6 +5,7 @@
   grid-template-columns: [col] 32% [col] 32% [col] 32%;
   grid-template-rows: [row] auto [row] auto [row] ;
   width: 100vw;
+  margin-top: 200px;
   }
   
 .card-world{
@@ -21,6 +22,12 @@
   grid-column:  col 2 / span 2;
   grid-row: 2;
   }
+
+.ant-card{
+  padding: 30px !important;
+  border-radius: 10px !important;
+  background-color: rgba(270, 270, 270, 0.7) !important;
+}
 
   @media only screen and (max-width: 600px) {
     .world-container{
